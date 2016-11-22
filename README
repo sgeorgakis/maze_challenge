@@ -1,0 +1,62 @@
+Synopsis: 
+
+python __main__.py -f file_path [options]
+
+Description:
+
+This program loads a maze from a file and creates an agent that navigates
+inside the maze from the starting point to the goal point.
+Due to a hash function that was used in order to compare points,
+the size of the y coordinates cannot overpass a class of 10^4.
+
+The maze is loaded from a text file that has the following format:
+
+1. X if the point is wall (and thus cannot be visited)
+2. _ if the point is a path point (and can be visited)
+3. S if the point is the starting point
+4. G if the point is the ending point
+
+A simple example of a maze is given below
+
+G____XXX
+_______X
+_____S_X
+
+The agent implements 2 search methods.
+A search function that searches all the points with breadth-first search
+until it finds the goal point
+and a search implementation of the A* algorithm.
+
+The path that the agent follows is logged
+in the command line.
+
+In the breadth-first search, all the nodes visited are logged,
+as the agent visites all the point until it finds the goal point.
+
+In the A* search, after the minimum path is calculated,
+it is logged in the command line, as this is the one
+that the agent will follow.
+
+  -f (required),
+  The path to the text file containing the maze.
+
+
+  --search (optional),
+  The search method that should be used.
+  By default, the A* algorithm is used.
+  If the user passes a value different than "a_star",
+  the breadth first algorithm is used.
+
+
+Example of usage:
+
+python __main__.py -f "mazes/maze" --search "breadth"
+
+Author:
+  Written by Stefanos Georgakis
+
+
+
+the code that was consulted for the implementation algorithms search was found at:
+http://www.laurentluce.com/posts/solving-mazes-using-python-simple-recursivity-and-a-search/
+http://www.redblobgames.com/pathfinding/a-star/implementation.html
